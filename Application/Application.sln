@@ -7,6 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "view", "view\view.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "model", "model\model.csproj", "{60E0D19B-8FA3-4F72-ABAC-07F3938E24F6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "local", "local", "{E5F4FB90-ABB1-48F7-893E-8C51A14AD593}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\Users\Usuario\Desktop\centros.txt = ..\..\..\..\Users\Usuario\Desktop\centros.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
