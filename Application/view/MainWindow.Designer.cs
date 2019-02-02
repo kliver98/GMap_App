@@ -1,6 +1,6 @@
-﻿namespace Application
+﻿namespace view
 {
-    partial class Form1
+    partial class MainWindow
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -28,10 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // MainWindow
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.Name = "MainWindow";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Sistema de información de C.A.L.I.";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
