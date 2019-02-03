@@ -37,7 +37,7 @@
             this.txtBoxLongitud = new System.Windows.Forms.TextBox();
             this.btnReiniciar = new System.Windows.Forms.Button();
             this.gmap = new GMap.NET.WindowsForms.GMapControl();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmBoxServicio = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridCALI)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,6 +79,7 @@
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // dtGridCALI
             // 
@@ -87,9 +88,11 @@
             this.dtGridCALI.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGridCALI.Location = new System.Drawing.Point(735, 327);
             this.dtGridCALI.Name = "dtGridCALI";
+            this.dtGridCALI.ReadOnly = true;
             this.dtGridCALI.RowTemplate.Height = 24;
             this.dtGridCALI.Size = new System.Drawing.Size(335, 327);
             this.dtGridCALI.TabIndex = 7;
+            this.dtGridCALI.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.seleccionMarcador);
             // 
             // txtBoxLatitud
             // 
@@ -116,6 +119,7 @@
             this.btnReiniciar.TabIndex = 10;
             this.btnReiniciar.Text = "Reiniciar";
             this.btnReiniciar.UseVisualStyleBackColor = true;
+            this.btnReiniciar.Click += new System.EventHandler(this.btnReiniciar_Click);
             // 
             // gmap
             // 
@@ -130,7 +134,7 @@
             this.gmap.MaxZoom = 2;
             this.gmap.MinZoom = 2;
             this.gmap.MouseWheelZoomEnabled = true;
-            this.gmap.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
+            this.gmap.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionWithoutCenter;
             this.gmap.Name = "gmap";
             this.gmap.NegativeMode = false;
             this.gmap.PolygonsEnabled = true;
@@ -142,13 +146,15 @@
             this.gmap.Size = new System.Drawing.Size(707, 678);
             this.gmap.TabIndex = 11;
             this.gmap.Zoom = 0D;
+            this.gmap.MouseClick += new System.Windows.Forms.MouseEventHandler(this.gmap_MouseClick);
+            this.gmap.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gmap_MouseDoubleClick);
             // 
-            // comboBox1
+            // cmBoxServicio
             // 
-            this.comboBox1.Cursor = System.Windows.Forms.Cursors.AppStarting;
-            this.comboBox1.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cmBoxServicio.Cursor = System.Windows.Forms.Cursors.AppStarting;
+            this.cmBoxServicio.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmBoxServicio.FormattingEnabled = true;
+            this.cmBoxServicio.Items.AddRange(new object[] {
             "Asocomunas / Asojac",
             "Comisaría de familia",
             "Comité Deportes",
@@ -171,17 +177,17 @@
             "Sisbén",
             "Subestación de Movilidad",
             "Ventallina Única"});
-            this.comboBox1.Location = new System.Drawing.Point(754, 180);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(292, 30);
-            this.comboBox1.TabIndex = 12;
+            this.cmBoxServicio.Location = new System.Drawing.Point(754, 180);
+            this.cmBoxServicio.Name = "cmBoxServicio";
+            this.cmBoxServicio.Size = new System.Drawing.Size(292, 30);
+            this.cmBoxServicio.TabIndex = 12;
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1082, 703);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cmBoxServicio);
             this.Controls.Add(this.gmap);
             this.Controls.Add(this.btnReiniciar);
             this.Controls.Add(this.txtBoxLongitud);
@@ -211,7 +217,7 @@
         private System.Windows.Forms.TextBox txtBoxLongitud;
         private System.Windows.Forms.Button btnReiniciar;
         private GMap.NET.WindowsForms.GMapControl gmap;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmBoxServicio;
     }
 }
 

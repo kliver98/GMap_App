@@ -9,7 +9,34 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "model", "model\model.csproj
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "local", "local", "{E5F4FB90-ABB1-48F7-893E-8C51A14AD593}"
 	ProjectSection(SolutionItems) = preProject
-		..\..\..\..\Users\Usuario\Desktop\centros.txt = ..\..\..\..\Users\Usuario\Desktop\centros.txt
+		..\..\..\..\Users\Usuario\Desktop\coordenadasCALI.txt = ..\..\..\..\Users\Usuario\Desktop\coordenadasCALI.txt
+		..\..\..\..\Users\Usuario\Desktop\servicios.txt = ..\..\..\..\Users\Usuario\Desktop\servicios.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "comunas", "comunas", "{62D10C1F-0FF0-499A-AA37-86C6E107D804}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna1.txt = ..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna1.txt
+		..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna10.txt = ..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna10.txt
+		..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna11.txt = ..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna11.txt
+		..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna12.txt = ..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna12.txt
+		..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna13.txt = ..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna13.txt
+		..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna14.txt = ..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna14.txt
+		..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna15.txt = ..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna15.txt
+		..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna16.txt = ..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna16.txt
+		..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna17.txt = ..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna17.txt
+		..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna18.txt = ..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna18.txt
+		..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna19.txt = ..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna19.txt
+		..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna2.txt = ..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna2.txt
+		..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna20.txt = ..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna20.txt
+		..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna21.txt = ..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna21.txt
+		..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna22.txt = ..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna22.txt
+		..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna3.txt = ..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna3.txt
+		..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna4.txt = ..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna4.txt
+		..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna5.txt = ..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna5.txt
+		..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna6.txt = ..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna6.txt
+		..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna7.txt = ..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna7.txt
+		..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna8.txt = ..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna8.txt
+		..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna9.txt = ..\..\..\..\Users\Usuario\Desktop\archivosComunas\comuna9.txt
 	EndProjectSection
 EndProject
 Global
@@ -29,6 +56,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{62D10C1F-0FF0-499A-AA37-86C6E107D804} = {E5F4FB90-ABB1-48F7-893E-8C51A14AD593}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {82D342C3-B54B-4953-80C3-BBA0B7D0B2F2}
