@@ -96,6 +96,12 @@ namespace view
 
         private void gmap_MouseClick(object sender, MouseEventArgs e)
         {
+            if (e.Button == MouseButtons.Left) //Para colocar marcador de la ubicación del usuario (naranja)
+            {
+                double lat = gmap.FromLocalToLatLng(e.X, e.Y).Lat;
+                double lng = gmap.FromLocalToLatLng(e.X, e.Y).Lng;
+                cambiarCuadroTextoMarcadorUsuario(lat, lng);
+            }
             /**if (e.Button.Equals(MouseButtons.Right))
             {
                 //Obteniendo lat y long clickeables
@@ -120,20 +126,6 @@ namespace view
         {
             markerUser.Position = new PointLatLng(lat, lng);
             markerUser.ToolTipText = string.Format("Posición actual\n({0},{1})",lat,lng);
-        }
-
-        private void btnBuscar_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void gmap_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            if (e.Button==MouseButtons.Left)
-            {
-                double lat = gmap.FromLocalToLatLng(e.X, e.Y).Lat;
-                double lng = gmap.FromLocalToLatLng(e.X, e.Y).Lng;
-                cambiarCuadroTextoMarcadorUsuario(lat, lng);
-            }
         }
     }
 }
