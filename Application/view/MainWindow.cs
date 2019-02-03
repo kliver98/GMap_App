@@ -36,17 +36,26 @@ namespace view
             InitializeComponent();
         }
 
+        public void agregarUbicacionesCALI(DataTable dtCALI)
+        {
+            string[,] puntos = modelo.darCoordenadasCALI();
+            for (int i = 1; i < 23; i++)
+            {
+                dtCALI.Rows.Add("CALI "+i, puntos[i-1,0], puntos[i-1,1]);
+            }
+            dtGridCALI.DataSource = dtCALI;
+        }
+
         private void MainWindow_Load(object sender, EventArgs e)
         {
 
             modelo = new GestionArchivo();
             dtCALI = new DataTable();
-            dtCALI.Columns.Add(new DataColumn("Descripción: ",typeof(string)));
+            dtCALI.Columns.Add(new DataColumn("Descripción ",typeof(string)));
             dtCALI.Columns.Add(new DataColumn("Latitud ", typeof(string)));
             dtCALI.Columns.Add(new DataColumn("Longitud ", typeof(string)));
 
-            dtCALI.Rows.Add("Ubicación x", DEFAULT_LAT, DEFAULT_LONG);
-            dtGridCALI.DataSource = dtCALI;
+            agregarUbicacionesCALI(dtCALI);
 
             //Desactivando columnas para que no aparezcan lat y ling
             dtGridCALI.Columns[1].Visible = dtGridCALI.Columns[2].Visible = false;

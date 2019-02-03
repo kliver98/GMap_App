@@ -10,7 +10,7 @@ namespace model
     {
         static void Main(string[] args)
         {
-            GestionArchivo asd = new GestionArchivo();
+            //GestionArchivo asd = new GestionArchivo();
         }
     }
 }

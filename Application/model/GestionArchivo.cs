@@ -20,19 +20,20 @@ namespace model
         public GestionArchivo()
         {
             string path = Path.GetFullPath(@"..\..\..\") + "/data";
-            if (!abrirDiccionarioBarrios(path+"/barrios.xml")) //Creando el diccionario con los barrios de cali si no existe
+            /**if (!abrirDiccionarioBarrios(path+"/barrios.xml")) //Creando el diccionario con los barrios de cali si no existe
             {
-                barriosCali = new Dictionary<string, int>();
-                for (int i = 1; i < 23; i++)
-                {
-                    string tmp = path + BARRIOS_COMUNAS +"comuna"+i+".txt";
-                    string[] barriosActuales = leerArchivo(tmp);
-                    foreach (var item in barriosActuales)
-                    {
-                        barriosCali[item] = i;
-                    }
-                }
+                
                 guardarBarriosCali(path + "/barrios.xml");
+            }**/
+            barriosCali = new Dictionary<string, int>();
+            for (int i = 1; i < 23; i++)
+            {
+                string tmp = path + BARRIOS_COMUNAS + "comuna" + i + ".txt";
+                string[] barriosActuales = leerArchivo(tmp);
+                foreach (var item in barriosActuales)
+                {
+                    barriosCali[item] = i;
+                }
             }
         }
 
@@ -48,7 +49,7 @@ namespace model
             return lectura;
         }
 
-        private bool abrirDiccionarioBarrios(string path)
+        /**private bool abrirDiccionarioBarrios(string path)
         {
             XmlSerializer xmlSer = new XmlSerializer(typeof(Dictionary<string,int>));
             if (!File.Exists(path))
@@ -80,6 +81,18 @@ namespace model
             {
                 return false;
             }
+        }**/
+
+        public string[,] darCoordenadasCALI()
+        {
+            string path = Path.GetFullPath(@"..\..\..\") + "/data";
+            string[,] coord = new string[23,2];
+            string[] c = leerArchivo(path+COORD_CALI);
+            for (int i = 0; i < 23; i++)
+            {
+                coord[i, 1] = c[i];
+            }
+            return coord;
         }
 
         public int darNumeroComuna(String barrio)
