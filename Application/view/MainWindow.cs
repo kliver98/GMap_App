@@ -23,6 +23,7 @@ namespace view
         private GMarkerGoogle markerUser;
         private GMapOverlay markerOverlay;
         private DataTable dtCALI;
+        private GestionArchivo modelo;
 
         public const double DEFAULT_LAT = 3.4113786;
         public const double DEFAULT_LONG = -76.5273724;
@@ -37,6 +38,8 @@ namespace view
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
+
+            modelo = new GestionArchivo();
             dtCALI = new DataTable();
             dtCALI.Columns.Add(new DataColumn("Descripción: ",typeof(string)));
             dtCALI.Columns.Add(new DataColumn("Latitud ", typeof(string)));
@@ -67,7 +70,7 @@ namespace view
             cambiarCuadroTextoMarcadorUsuario(DEFAULT_LAT, DEFAULT_LONG);
             cambiarCuadroTextoMarcador(latitud, longitud);
             gmap.Overlays.Add(markerOverlay);
-            gmap.UpdateMarkerLocalPosition(marker);
+            actualizarGmap();
             
         }
 
@@ -96,36 +99,50 @@ namespace view
 
         private void gmap_MouseClick(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left) //Para colocar marcador de la ubicación del usuario (naranja)
+            if (e.Button == MouseButtons.Right) //Para colocar marcador de la ubicación del usuario (naranja)
             {
                 double lat = gmap.FromLocalToLatLng(e.X, e.Y).Lat;
                 double lng = gmap.FromLocalToLatLng(e.X, e.Y).Lng;
                 cambiarCuadroTextoMarcadorUsuario(lat, lng);
+                actualizarLatyLng(lat, lng);
             }
-            /**if (e.Button.Equals(MouseButtons.Right))
-            {
-                //Obteniendo lat y long clickeables
-                double lat = gmap.FromLocalToLatLng(e.X, e.Y).Lat;
-                double lng = gmap.FromLocalToLatLng(e.X, e.Y).Lng;
-
-                txtBoxLatitud.Text = lat.ToString();
-                txtBoxLongitud.Text = lng.ToString();
-
-                cambiarCuadroTextoMarcador(lat,lng);
-
-            }**/
         }
 
         private void cambiarCuadroTextoMarcador(double lat, double lng)
         {
             marker.Position = new PointLatLng(lat, lng);
-            marker.ToolTipText = string.Format("Ubicación \nLatitud: {0} \nLongitud: {1}", lat, lng);
+            marker.ToolTipText = string.Format("Ubicación \nLatitud: {0:N7} \nLongitud: {1:N7}", lat, lng);
         }
 
         private void cambiarCuadroTextoMarcadorUsuario(double lat, double lng)
         {
             markerUser.Position = new PointLatLng(lat, lng);
-            markerUser.ToolTipText = string.Format("Posición actual\n({0},{1})",lat,lng);
+            markerUser.ToolTipText = string.Format("Posición actual\n({0:N7},{1:N7})",lat,lng);
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            /** - NO SIRVE YA - GDirections direccion;
+            PointLatLng inicio = new PointLatLng(markerUser.Position.Lat, markerUser.Position.Lng);
+            PointLatLng final = new PointLatLng(marker.Position.Lat, marker.Position.Lng);
+            var rutasDireccion = GMapProviders.GoogleMap.GetDirections(out direccion,inicio, final,false, false, false, false, false);
+            GMapRoute rutaObtenida = new GMapRoute(direccion.Route,"Ruta ubicación");
+            GMapOverlay capaRuta = new GMapOverlay("Capa de la ruta");
+            capaRuta.Routes.Add(rutaObtenida);
+            gmap.Overlays.Add(capaRuta);
+            actualizarGmap();**/
+        }
+
+        private void actualizarGmap()
+        {
+            gmap.Zoom += 1;
+            gmap.Zoom -= 1;
+        }
+
+        private void actualizarLatyLng(double lat, double lng)
+        {
+            txtBoxLatitud.Text = lat.ToString();
+            txtBoxLongitud.Text = lng.ToString();
         }
     }
 }
