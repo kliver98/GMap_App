@@ -83,7 +83,9 @@
             // 
             // dtGridCALI
             // 
+            this.dtGridCALI.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.dtGridCALI.AllowUserToAddRows = false;
+            this.dtGridCALI.AllowUserToDeleteRows = false;
             this.dtGridCALI.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtGridCALI.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGridCALI.Location = new System.Drawing.Point(735, 327);
@@ -92,7 +94,7 @@
             this.dtGridCALI.RowTemplate.Height = 24;
             this.dtGridCALI.Size = new System.Drawing.Size(335, 327);
             this.dtGridCALI.TabIndex = 7;
-            this.dtGridCALI.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.seleccionMarcador);
+            this.dtGridCALI.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.seleccionMarcador);
             // 
             // txtBoxLatitud
             // 

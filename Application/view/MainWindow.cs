@@ -39,7 +39,7 @@ namespace view
         public void agregarUbicacionesCALI(DataTable dtCALI)
         {
             string[,] puntos = modelo.darCoordenadasCALI();
-            for (int i = 1; i < 23; i++)
+            for (int i = 1; i < 24; i++)
             {
                 dtCALI.Rows.Add("CALI "+i, puntos[i-1,0], puntos[i-1,1]);
             }
@@ -96,14 +96,23 @@ namespace view
 
         private void seleccionMarcador(object sender, DataGridViewCellEventArgs e)
         {
-            filaSeleccionada = e.RowIndex;
-            txtBoxLatitud.Text = dtGridCALI.Rows[filaSeleccionada].Cells[1].Value.ToString();
-            txtBoxLongitud.Text = dtGridCALI.Rows[filaSeleccionada].Cells[2].Value.ToString();
-            //Agregando el marcador
-            double lat = Convert.ToDouble(txtBoxLatitud.Text);
-            double lng = Convert.ToDouble(txtBoxLongitud.Text);
-            cambiarCuadroTextoMarcador(lat, lng);
-            gmap.Position = marker.Position;
+            try
+            {
+                filaSeleccionada = e.RowIndex;
+                string[] rsp = dtGridCALI.Rows[filaSeleccionada].Cells[2].Value.ToString().Split(',');
+                rsp[0] = rsp[0].Replace('.', ',');
+                rsp[1] = rsp[1].Replace('.', ',');
+                double lat = Convert.ToDouble(rsp[0]);
+                double lng = Convert.ToDouble(rsp[1]);
+                cambiarCuadroTextoMarcador(lat, lng);
+                actualizarLatyLng(lat,lng);
+                gmap.Position = marker.Position;
+            }
+            catch (Exception)
+            {
+
+            }
+            
         }
 
         private void gmap_MouseClick(object sender, MouseEventArgs e)
