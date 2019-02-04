@@ -11,11 +11,14 @@ namespace model
 {
     public class GestionArchivo
     {
-        private const String SERVICIOS = "/servicios.txt";
-        private const String COORD_CALI = "/coordenadasCALI.txt";
-        private const String INFO_COMUNAS = "/informacionComunas/";
-        private const String BARRIOS_COMUNAS = "/barriosComunas/";
+        public const String SERVICIOS = "/servicios.txt";
+        public const String COORD_CALI = "/coordenadasCALI.txt";
+        public const String INFO_COMUNAS = "/informacionComunas/";
+        public const String BARRIOS_COMUNAS = "/barriosComunas/";
+        public const String SERV_CALI = "/archivoServCALI.txt";
         private Dictionary<string, int> barriosCali;
+        private string[] servicios;
+        private string[,] coordenadasCALI;
 
         public GestionArchivo()
         {
@@ -35,6 +38,7 @@ namespace model
                     barriosCali[item] = i;
                 }
             }
+            servicios = darServicios();
         }
 
         private String[] leerArchivo(string path)
@@ -86,18 +90,97 @@ namespace model
         public string[,] darCoordenadasCALI()
         {
             string path = Path.GetFullPath(@"..\..\..\") + "/data";
-            string[,] coord = new string[23,2];
+            coordenadasCALI = new string[23,2];
             string[] c = leerArchivo(path+COORD_CALI);
             for (int i = 0; i < 23; i++)
             {
-                coord[i, 1] = c[i];
+                string[] tmp = c[i].Split(',');
+                coordenadasCALI[i, 0] = tmp[0];
+                coordenadasCALI[i, 1] = tmp[1];
             }
-            return coord;
+            return coordenadasCALI;
         }
 
         public int darNumeroComuna(String barrio)
         {
             return barriosCali[barrio];
+        }
+
+        public string[] darBarrios()
+        {
+            string[] b = new string[barriosCali.Count];
+            int i = 0;
+            foreach (var item in barriosCali)
+            {
+                b[i] = item.Key;
+                i++;
+            }
+            Array.Sort<string>(b);
+            return b;
+        }
+
+        public string[] darServicios()
+        {
+            string path = Path.GetFullPath(@"..\..\..\") + "/data";
+            string[] rsp = leerArchivo(path+SERVICIOS);
+            return rsp;
+        }
+
+        private int darNumeroServicio(String nombreServicio)
+        {
+            bool encontrado = false;
+            int numero = 0;
+            for (int i = 0; i < servicios.Length && !encontrado; i++)
+            {
+                if (string.Equals(nombreServicio, servicios[i], StringComparison.OrdinalIgnoreCase))
+                {
+                    numero = i + 1;
+                    encontrado = true;
+                }
+            }
+            return numero;
+        }
+
+        public bool tieneServicio(String nombreBarrio, String nombreServicio)
+        {
+            int numeroServicio = darNumeroServicio(nombreServicio);
+            bool encontrado = false;
+            if (barriosCali.ContainsKey(nombreBarrio))
+            {
+                if (servicios.Contains(nombreServicio))
+                {
+                    encontrado = true;
+                }
+            }
+            return encontrado;
+        }
+
+        public string[,] darCoordenadasCALIEncontradas(string barrio, string servicio)
+        {
+            string path = Path.GetFullPath(@"..\..\..\") + "/data";
+            int comuna = darNumeroComuna(barrio);
+            int num_servicio = darNumeroServicio(servicio);
+            string[] arc = leerArchivo(path+SERV_CALI);
+            List<int> asd = new List<int>();
+            for (int i = 0; i < arc.Length; i++) //Recorre los 22 cali y ve si contiene servicio que usuario necesita
+            {
+                string[] temp = arc[i].Split(',');
+                foreach (var item in temp)
+                {
+                    if (item.Equals(num_servicio.ToString()))
+                    {
+                        asd.Add(i);
+                        break;
+                    }
+                }
+            }
+            string[,] rst = new string[asd.Count,2];
+            for (int i = 0; i < asd.Count; i++)
+            {
+                rst[i, 0] = coordenadasCALI[asd[i],0];
+                rst[i, 1] = coordenadasCALI[asd[i], 1];
+            }
+            return rst;
         }
 
     }

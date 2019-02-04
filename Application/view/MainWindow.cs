@@ -36,10 +36,14 @@ namespace view
             InitializeComponent();
         }
 
-        public void agregarUbicacionesCALI(DataTable dtCALI)
+        public void agregarUbicacionesCALI(bool accion)
         {
-            string[,] puntos = modelo.darCoordenadasCALI();
-            for (int i = 1; i < 24; i++)
+            dtCALI = new DataTable();
+            dtCALI.Columns.Add(new DataColumn("Descripción ", typeof(string)));
+            dtCALI.Columns.Add(new DataColumn("Latitud ", typeof(string)));
+            dtCALI.Columns.Add(new DataColumn("Longitud ", typeof(string)));
+            string[,] puntos = accion ? modelo.darCoordenadasCALI():modelo.darCoordenadasCALIEncontradas(cmBoxBarrio.Text,cmBoxServicio.Text);
+            for (int i = 1; i < (puntos.Length/2)+1; i++)
             {
                 dtCALI.Rows.Add("CALI "+i, puntos[i-1,0], puntos[i-1,1]);
             }
@@ -50,12 +54,16 @@ namespace view
         {
 
             modelo = new GestionArchivo();
-            dtCALI = new DataTable();
-            dtCALI.Columns.Add(new DataColumn("Descripción ",typeof(string)));
-            dtCALI.Columns.Add(new DataColumn("Latitud ", typeof(string)));
-            dtCALI.Columns.Add(new DataColumn("Longitud ", typeof(string)));
 
-            agregarUbicacionesCALI(dtCALI);
+            agregarUbicacionesCALI(true);
+
+            //Agregando servicios
+            string[] serv = modelo.darServicios();
+            cmBoxServicio.Items.AddRange(serv);
+
+            //Agregando barrios
+            string[] barr = modelo.darBarrios();
+            cmBoxBarrio.Items.AddRange(barr);
 
             //Desactivando columnas para que no aparezcan lat y ling
             dtGridCALI.Columns[1].Visible = dtGridCALI.Columns[2].Visible = false;
@@ -85,7 +93,7 @@ namespace view
 
         private void btnReiniciar_Click(object sender, EventArgs e)
         {
-            txtBoxBarrio.Text = "";
+            cmBoxBarrio.Text = "";
             cmBoxServicio.Text = "";
             cambiarCuadroTextoMarcador(latitud, longitud);
             gmap.Position = new PointLatLng(DEFAULT_LAT, DEFAULT_LONG);
@@ -99,9 +107,10 @@ namespace view
             try
             {
                 filaSeleccionada = e.RowIndex;
-                string[] rsp = dtGridCALI.Rows[filaSeleccionada].Cells[2].Value.ToString().Split(',');
-                rsp[0] = rsp[0].Replace('.', ',');
-                rsp[1] = rsp[1].Replace('.', ',');
+                string[] rsp = new String[2];
+                dtGridCALI.Rows[filaSeleccionada].Cells[2].Value.ToString().Split(',');
+                rsp[0] = dtGridCALI.Rows[filaSeleccionada].Cells[1].Value.ToString().Replace('.', ',');
+                rsp[1] = dtGridCALI.Rows[filaSeleccionada].Cells[2].Value.ToString().Replace('.', ',');
                 double lat = Convert.ToDouble(rsp[0]);
                 double lng = Convert.ToDouble(rsp[1]);
                 cambiarCuadroTextoMarcador(lat, lng);
@@ -149,6 +158,7 @@ namespace view
             capaRuta.Routes.Add(rutaObtenida);
             gmap.Overlays.Add(capaRuta);
             actualizarGmap();**/
+            agregarUbicacionesCALI(false);
         }
 
         private void actualizarGmap()

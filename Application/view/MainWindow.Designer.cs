@@ -30,7 +30,6 @@
         {
             this.lblBarrio = new System.Windows.Forms.Label();
             this.lblServicio = new System.Windows.Forms.Label();
-            this.txtBoxBarrio = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dtGridCALI = new System.Windows.Forms.DataGridView();
             this.txtBoxLatitud = new System.Windows.Forms.TextBox();
@@ -38,6 +37,7 @@
             this.btnReiniciar = new System.Windows.Forms.Button();
             this.gmap = new GMap.NET.WindowsForms.GMapControl();
             this.cmBoxServicio = new System.Windows.Forms.ComboBox();
+            this.cmBoxBarrio = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridCALI)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,14 +60,6 @@
             this.lblServicio.Size = new System.Drawing.Size(76, 20);
             this.lblServicio.TabIndex = 2;
             this.lblServicio.Text = "Servicio";
-            // 
-            // txtBoxBarrio
-            // 
-            this.txtBoxBarrio.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxBarrio.Location = new System.Drawing.Point(754, 93);
-            this.txtBoxBarrio.Name = "txtBoxBarrio";
-            this.txtBoxBarrio.Size = new System.Drawing.Size(292, 29);
-            this.txtBoxBarrio.TabIndex = 3;
             // 
             // btnBuscar
             // 
@@ -155,39 +147,27 @@
             this.cmBoxServicio.Cursor = System.Windows.Forms.Cursors.AppStarting;
             this.cmBoxServicio.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmBoxServicio.FormattingEnabled = true;
-            this.cmBoxServicio.Items.AddRange(new object[] {
-            "Asocomunas / Asojac",
-            "Comisaría de familia",
-            "Comité Deportes",
-            "Dagma",
-            "Educación",
-            "EMCALI",
-            "Fiscalía",
-            "Infocali",
-            "Inspección de policía",
-            "Jueces de Paz",
-            "Juez de Pequeñas Causas",
-            "Megaobras",
-            "Oficina JAL",
-            "Personería",
-            "Plan Jarillón",
-            "Predial, Industria y Comercio",
-            "Psicologos adulto mayor",
-            "Punto de información y orientación a las víctimas del conflicto armado interno",
-            "Secretaría de Desarrollo Terriotorial y Participación Ciudadana",
-            "Sisbén",
-            "Subestación de Movilidad",
-            "Ventallina Única"});
             this.cmBoxServicio.Location = new System.Drawing.Point(754, 180);
             this.cmBoxServicio.Name = "cmBoxServicio";
             this.cmBoxServicio.Size = new System.Drawing.Size(292, 30);
             this.cmBoxServicio.TabIndex = 12;
+            // 
+            // cmBoxBarrio
+            // 
+            this.cmBoxBarrio.Cursor = System.Windows.Forms.Cursors.AppStarting;
+            this.cmBoxBarrio.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmBoxBarrio.FormattingEnabled = true;
+            this.cmBoxBarrio.Location = new System.Drawing.Point(754, 96);
+            this.cmBoxBarrio.Name = "cmBoxBarrio";
+            this.cmBoxBarrio.Size = new System.Drawing.Size(292, 30);
+            this.cmBoxBarrio.TabIndex = 13;
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1082, 703);
+            this.Controls.Add(this.cmBoxBarrio);
             this.Controls.Add(this.cmBoxServicio);
             this.Controls.Add(this.gmap);
             this.Controls.Add(this.btnReiniciar);
@@ -195,7 +175,6 @@
             this.Controls.Add(this.txtBoxLatitud);
             this.Controls.Add(this.dtGridCALI);
             this.Controls.Add(this.btnBuscar);
-            this.Controls.Add(this.txtBoxBarrio);
             this.Controls.Add(this.lblServicio);
             this.Controls.Add(this.lblBarrio);
             this.Name = "MainWindow";
@@ -211,7 +190,6 @@
         #endregion
         private System.Windows.Forms.Label lblBarrio;
         private System.Windows.Forms.Label lblServicio;
-        private System.Windows.Forms.TextBox txtBoxBarrio;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.DataGridView dtGridCALI;
         private System.Windows.Forms.TextBox txtBoxLatitud;
@@ -219,6 +197,7 @@
         private System.Windows.Forms.Button btnReiniciar;
         private GMap.NET.WindowsForms.GMapControl gmap;
         private System.Windows.Forms.ComboBox cmBoxServicio;
+        private System.Windows.Forms.ComboBox cmBoxBarrio;
     }
 }
 
