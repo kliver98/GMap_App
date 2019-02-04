@@ -1,0 +1,9 @@
+En la carpeta Application esta la solucion del proyecto en c#.
+En la carpeta Archivos estan los archivos de la presentación, requerimientos, diagramas y método de la ingeniería.
+En la carpeta Tiempos PSP estan los registros de los tiempos tomados con PSP.
+
+Integrantes:
+Cristian Cobo
+Kliver Girón
+
+Proyecto Integrador 1

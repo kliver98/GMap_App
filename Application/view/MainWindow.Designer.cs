@@ -38,6 +38,7 @@
             this.gmap = new GMap.NET.WindowsForms.GMapControl();
             this.cmBoxServicio = new System.Windows.Forms.ComboBox();
             this.cmBoxBarrio = new System.Windows.Forms.ComboBox();
+            this.checkBoxMostrarInfo = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridCALI)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,7 +65,7 @@
             // btnBuscar
             // 
             this.btnBuscar.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscar.Location = new System.Drawing.Point(900, 262);
+            this.btnBuscar.Location = new System.Drawing.Point(900, 242);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(146, 37);
             this.btnBuscar.TabIndex = 5;
@@ -107,7 +108,7 @@
             // btnReiniciar
             // 
             this.btnReiniciar.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReiniciar.Location = new System.Drawing.Point(754, 262);
+            this.btnReiniciar.Location = new System.Drawing.Point(754, 242);
             this.btnReiniciar.Name = "btnReiniciar";
             this.btnReiniciar.Size = new System.Drawing.Size(123, 37);
             this.btnReiniciar.TabIndex = 10;
@@ -162,11 +163,22 @@
             this.cmBoxBarrio.Size = new System.Drawing.Size(292, 30);
             this.cmBoxBarrio.TabIndex = 13;
             // 
+            // checkBoxMostrarInfo
+            // 
+            this.checkBoxMostrarInfo.AutoSize = true;
+            this.checkBoxMostrarInfo.Location = new System.Drawing.Point(754, 285);
+            this.checkBoxMostrarInfo.Name = "checkBoxMostrarInfo";
+            this.checkBoxMostrarInfo.Size = new System.Drawing.Size(155, 21);
+            this.checkBoxMostrarInfo.TabIndex = 14;
+            this.checkBoxMostrarInfo.Text = "Mostrar Información";
+            this.checkBoxMostrarInfo.UseVisualStyleBackColor = true;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1082, 703);
+            this.Controls.Add(this.checkBoxMostrarInfo);
             this.Controls.Add(this.cmBoxBarrio);
             this.Controls.Add(this.cmBoxServicio);
             this.Controls.Add(this.gmap);
@@ -198,6 +210,7 @@
         private GMap.NET.WindowsForms.GMapControl gmap;
         private System.Windows.Forms.ComboBox cmBoxServicio;
         private System.Windows.Forms.ComboBox cmBoxBarrio;
+        private System.Windows.Forms.CheckBox checkBoxMostrarInfo;
     }
 }
 

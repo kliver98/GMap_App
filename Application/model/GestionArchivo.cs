@@ -183,5 +183,10 @@ namespace model
             return rst;
         }
 
+        public string[] darInformacionCALI(int cali) {
+            string path = Path.GetFullPath(@"..\..\..\") + "/data"+ INFO_COMUNAS;
+            return leerArchivo(path+"info"+cali+".txt");
+        }
+
     }
 }

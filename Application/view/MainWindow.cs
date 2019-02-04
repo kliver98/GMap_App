@@ -52,7 +52,7 @@ namespace view
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
-
+            checkBoxMostrarInfo.Checked = true;
             modelo = new GestionArchivo();
 
             agregarUbicacionesCALI(true);
@@ -100,6 +100,7 @@ namespace view
             gmap.Zoom = gmap.MinZoom;
             txtBoxLatitud.Text = Convert.ToString(latitud);
             txtBoxLongitud.Text = Convert.ToString(longitud);
+            agregarUbicacionesCALI(true);
         }
 
         private void seleccionMarcador(object sender, DataGridViewCellEventArgs e)
@@ -116,6 +117,11 @@ namespace view
                 cambiarCuadroTextoMarcador(lat, lng);
                 actualizarLatyLng(lat,lng);
                 gmap.Position = marker.Position;
+                if (checkBoxMostrarInfo.Checked)
+                {
+                    PanelInformacion info = new PanelInformacion(this);
+                    info.Show();
+                }
             }
             catch (Exception)
             {
@@ -172,5 +178,12 @@ namespace view
             txtBoxLatitud.Text = lat.ToString();
             txtBoxLongitud.Text = lng.ToString();
         }
+
+        public string[] darInformacionCALI()
+        {
+            string[] a = dtGridCALI.Rows[filaSeleccionada].Cells[0].Value.ToString().Split(' ');
+            return modelo.darInformacionCALI(Convert.ToInt16(a[1]));
+        }
+
     }
 }
